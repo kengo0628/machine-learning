@@ -108,7 +108,7 @@ def main():
     ax.set_ylim(-1, 4)
     X, Y = np.meshgrid(theta0_vals, theta1_vals)
     h = np.logspace(-2, 3, 15, base=10)
-    ct = ax.contour(X, Y, J_vals, cmap="hsv", levels=h)
+    ct = ax.contour(X, Y, J_vals, cmap='hsv', levels=h)
     ax.clabel(ct, fontsize=12)
 
     plt.show()
