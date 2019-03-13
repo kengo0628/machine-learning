@@ -89,31 +89,26 @@ def main():
 
     J_vals = J_vals.T
 
+    #Surface plot
     X1, X2 = np.meshgrid(theta0_vals, theta1_vals)
     X = np.c_[np.ravel(X1), np.ravel(X2)]
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     surf = ax.plot_surface(X1, X2, J_vals, cmap='bwr', linewidth=0)
     fig.colorbar(surf)
-    ax.set_title("Surface Plot")
+    ax.set_title('Surface Plot')
     fig.show()
 
+    #Contour plot
     fig = plt.figure(figsize=(5, 5))
-    # FigureにAxesを追加
     ax = fig.add_subplot(111)
-    # 軸ラベルを設定
     ax.set_xlabel('Theta0', size=14)
     ax.set_ylabel('Theta1', size=14)
-    # 軸の範囲を設定
     ax.set_xlim(-10, 10)
     ax.set_ylim(-1, 4)
-    # 格子点の作成
     X, Y = np.meshgrid(theta0_vals, theta1_vals)
-    # 等高線を描く高度
     h = np.logspace(-2, 3, 15, base=10)
-    # 等高線をプロット(カラーマップはhsv)
     ct = ax.contour(X, Y, J_vals, cmap="hsv", levels=h)
-    # 等高線ラベルを設定
     ax.clabel(ct, fontsize=12)
 
     plt.show()
